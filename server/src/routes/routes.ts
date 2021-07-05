@@ -4,12 +4,12 @@ const testSchema = {
       type: 'array',
       items: {
         type: 'object',
-        required: ['id', 'favorite_name', 'owner_id', 'craeted_time'],
+        required: ['id', 'favorite_name', 'owner_id', 'created_time'],
         properties: {
           id: { type: 'number' },
           favorite_name: { type: 'string' },
           owner_id: { type: 'number' },
-          craeted_time: { type: 'string' },
+          created_time: { type: 'string' },
         },
       },
     },
