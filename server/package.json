@@ -29,6 +29,7 @@
     "fastify-plugin": "^3.0.0",
     "fastify-tsconfig": "^1.0.1",
     "http": "^0.0.1-security",
+    "moment": "^2.29.1",
     "nodemon": "^2.0.7",
     "pg": "^8.6.0",
     "prettier": "^2.3.1",

@@ -2,11 +2,12 @@ import fastify, { FastifyInstance } from 'fastify'
 import { Server, IncomingMessage, ServerResponse } from 'http'
 import dbConnection from './plugins/dbConnection'
 import routes from './routes/routes'
+import favorite from './routes/favorite'
 const server: FastifyInstance<Server, IncomingMessage, ServerResponse> =
   fastify()
 
 server.register(dbConnection)
-server.register(routes)
+server.register(favorite)
 server.register(require('fastify-cors'), {
   // put your options here
 })
