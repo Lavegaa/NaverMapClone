@@ -18,7 +18,7 @@ server.register(require('fastify-swagger'), {
           description: 'All micro-services',
           version: '1.0.0'
       },
-      host: '0.0.0.0:3001',
+      host: '3.16.131.32:3001',
       schemes: "",
       consumes: ['application/json'],
       produces: ['application/json'],
