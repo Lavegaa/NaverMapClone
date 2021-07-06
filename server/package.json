@@ -5,7 +5,8 @@
   "main": "app.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run build:ts && nodemon dist/app.js",
+    "start": "npm run build:ts && pm2 start dist/app.js --watch",
+    "stop": "pm2 kill",
     "build:ts": "tsc"
   },
   "author": "",
