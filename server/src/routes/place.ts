@@ -10,7 +10,7 @@ const testSchema = {
           'place_name',
           'owner_id',
           'latitude',
-          'logitude',
+          'longitude',
           'favorite_id',
           'created_time',
         ],
@@ -19,7 +19,7 @@ const testSchema = {
           place_name: { type: 'string' },
           owner_id: { type: 'number' },
           latitude: { type: 'number' },
-          logitude: { type: 'number' },
+          longitude: { type: 'number' },
           favorite_id: { type: 'string' },
           created_time: { type: 'string' },
         },
@@ -53,14 +53,14 @@ async function routes(fastify: any, options: any) {
     { schema: testSchema },
     async function (request: any, reply: any) {
       try {
-        const { latitude, logitude, owner_id, place_name, favorite_id } =
+        const { latitude, longitude, owner_id, place_name, favorite_id } =
           request.body
         const now = moment().format()
         console.log(now, moment().tz())
         await client.query(
           `INSERT INTO place
-          (owner_id, latitude, logitude, place_name, favorite_id, created_time)
-          VALUES(${owner_id}, ${latitude}, ${logitude}, '${place_name}', ${favorite_id}, '${now}');
+          (owner_id, latitude, longitude, place_name, favorite_id, created_time)
+          VALUES(${owner_id}, ${latitude}, ${longitude}, '${place_name}', ${favorite_id}, '${now}');
           `
         )
         const { rows } = await client.query(
