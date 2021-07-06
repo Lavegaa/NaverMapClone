@@ -28,7 +28,7 @@ async function routes(fastify: any, options: any) {
       try {
         const { owner_id } = request.query
         const { rows } = await client.query(
-          `SELECT * FROM favorite WHERE owner_id=${owner_id}`
+          `SELECT * FROM favorite WHERE owner_id=${owner_id} ORDER BY created_time DESC`
         )
         console.log(rows)
         reply.send(rows)
@@ -51,7 +51,7 @@ async function routes(fastify: any, options: any) {
           VALUES('${favorite_name}', ${owner_id}, '${now}');`
         )
         const { rows } = await client.query(
-          `SELECT * FROM favorite WHERE owner_id=${owner_id}`
+          `SELECT * FROM favorite WHERE owner_id=${owner_id} ORDER BY created_time DESC`
         )
         console.log(rows)
         reply.send(rows)
@@ -69,7 +69,7 @@ async function routes(fastify: any, options: any) {
         const { id, owner_id } = request.query
         await client.query(`DELETE FROM public.favorite WHERE id=${id}`)
         const { rows } = await client.query(
-          `SELECT * FROM favorite WHERE owner_id=${owner_id}`
+          `SELECT * FROM favorite WHERE owner_id=${owner_id} ORDER BY created_time DESC`
         )
         console.log(rows)
         reply.send(rows)
