@@ -2,7 +2,7 @@ name: ServerDeploy
 on:
   push:
     branches:
-      - master 
+      - server 
 jobs:
   build:
     runs-on: ubuntu-latest
