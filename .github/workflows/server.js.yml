@@ -16,7 +16,7 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Build # Fastify Build and Start
         working-directory: ./server
-        run: yarn start
+        run: yarn build
       - name: zip create
         working-directory: ./server
         run: zip -qq -r ./server.zip .
