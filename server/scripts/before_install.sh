@@ -1,6 +1,4 @@
-
 #!/bin/bash
-
 
 # Install node.js
 export NVM_DIR="$HOME/.nvm"
