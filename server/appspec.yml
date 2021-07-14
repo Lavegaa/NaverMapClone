@@ -10,7 +10,15 @@ permissions:
     group: root
     mode: 755
 hooks:
-  AfterInstall:
-    - location: deploy.sh
-      timeout: 60
+  BeforeInstall:
+    - location: scripts/before_install.sh
+      timeout: 300
       runas: root
+  AfterInstall:
+    - location: scripts/after_install.sh
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: scripts/application_start.sh
+      timeout: 300
+      runas: ubuntu
