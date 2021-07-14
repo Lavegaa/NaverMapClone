@@ -2,8 +2,8 @@
 
 # Install node.js
 export NVM_DIR="~/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+[ -s "/home/ubuntu/.nvm/nvm.sh" ] && \. "/home/ubuntu/.nvm//nvm.sh"  # This loads nvm
+[ -s "/home/ubuntu/.nvm//bash_completion" ] && \. "/home/ubuntu/.nvm//bash_completion"
 
 # Install nodemon
 # sudo npm install nodemon -g
