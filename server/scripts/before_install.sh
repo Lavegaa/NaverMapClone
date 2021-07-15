@@ -4,7 +4,8 @@
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt install -y nodejs
 
-
+node -v
+npm -v
 # Install nodemon
 # sudo npm install nodemon -g
 
