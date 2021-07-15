@@ -3,9 +3,7 @@
 # Install node.js
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt install -y nodejs
-export NVM_DIR="~/.nvm"
-[ -s "/home/ubuntu/.nvm/nvm.sh" ] && \. "/home/ubuntu/.nvm//nvm.sh"  # This loads nvm
-[ -s "/home/ubuntu/.nvm//bash_completion" ] && \. "/home/ubuntu/.nvm//bash_completion"
+
 
 # Install nodemon
 # sudo npm install nodemon -g
