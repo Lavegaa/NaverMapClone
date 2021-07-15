@@ -1,5 +1,5 @@
 #!/bin/bash
 
-cd /home/ubuntu/server
+# cd /home/ubuntu/server
 
 npm run start
