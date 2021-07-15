@@ -1,10 +1,8 @@
 #!/bin/bash
 
 # Install node.js
-sudo apt-get install python-software-properties -y
-sudo apt-add-repository ppa:chris-lea/node.js -y
-sudo apt-get update
-sudo apt-get install nodejs -y
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+sudo apt install -y nodejs
 export NVM_DIR="~/.nvm"
 [ -s "/home/ubuntu/.nvm/nvm.sh" ] && \. "/home/ubuntu/.nvm//nvm.sh"  # This loads nvm
 [ -s "/home/ubuntu/.nvm//bash_completion" ] && \. "/home/ubuntu/.nvm//bash_completion"
