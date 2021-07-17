@@ -2,7 +2,7 @@ name: ServerDeploy
 on:
   push:
     branches:
-      - server 
+      - server
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,10 +12,15 @@ jobs:
       - name: Check Node v
         run: node -v
       - name: Install Dependencies
+        working-directory: ./server
+        run: yarn install --frozen-lockfile
         run: cd ./server & yarn install --frozen-lockfile
+
       - name: Build # Fastify Build and Start
-        run: yarn start
+        working-directory: ./server
+        run: yarn build
       - name: zip create
+        working-directory: ./server
         run: zip -qq -r ./server.zip .
         shell: bash
       - name: Configure AWS credentials
@@ -25,14 +30,16 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
       - name: Upload to S3 # Upload build file to S3
+        working-directory: ./server
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
-          aws s3 cp --region ap-northeast-2 ./server.zip s3://server/server.zip
+          aws s3 cp --region ap-northeast-2 ./server.zip s3://mapclone-server/server/server.zip
       - name: Deploy # Deploy to EC2
+        working-directory: ./server
         run: aws deploy create-deployment
-          --application-name node-server
+          --application-name my-app
           --deployment-config-name CodeDeployDefault.AllAtOnce
-          --deployment-group-name node-server-group
+          --deployment-group-name my-group
           --s3-location bucket=mapclone-server,key=server/server.zip,bundleType=zip
