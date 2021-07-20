@@ -1,4 +1,4 @@
-name: ServerDeploy
+name: LavegaaWebAppDeploy
 on:
   push:
     branches:

@@ -22,6 +22,7 @@ module.exports = {
     'jsx-a11y/no-noninteractive-element-interactions': 0,
     "react/jsx-props-no-spreading": "off",
     '@typescript-eslint/no-empty-function': 'off',
-    'react/require-default-props': 'off'
+    'react/require-default-props': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
   },
 };
