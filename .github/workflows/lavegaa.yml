@@ -41,4 +41,4 @@ jobs:
           --application-name my-app
           --deployment-config-name CodeDeployDefault.AllAtOnce
           --deployment-group-name my-group
-          --s3-location bucket=mapclone-server,key=server/server.zip,bundleType=zip
+          --s3-location bucket=mapclone-server,key=lavegaa/lavegaa.zip,bundleType=zip
