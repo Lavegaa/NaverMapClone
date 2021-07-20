@@ -35,10 +35,10 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
           aws s3 cp --region ap-northeast-2 ./lavegaa.zip s3://mapclone-server/lavegaa/lavegaa.zip
-      # - name: Deploy # Deploy to EC2
-      #   working-directory: ./lavegaa
-      #   run: aws deploy create-deployment
-      #     --application-name my-app
-      #     --deployment-config-name CodeDeployDefault.AllAtOnce
-      #     --deployment-group-name my-group
-      #     --s3-location bucket=mapclone-server,key=server/server.zip,bundleType=zip
+      - name: Deploy # Deploy to EC2
+        working-directory: ./lavegaa
+        run: aws deploy create-deployment
+          --application-name my-app
+          --deployment-config-name CodeDeployDefault.AllAtOnce
+          --deployment-group-name my-group
+          --s3-location bucket=mapclone-server,key=server/server.zip,bundleType=zip
