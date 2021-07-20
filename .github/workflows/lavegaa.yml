@@ -20,6 +20,9 @@ jobs:
       - name: Copy Appspec
         working-directory: ./lavegaa
         run: cp ./appspec.yml ./build
+      - name: Copy scripts
+        working-directory: ./lavegaa
+        run: cp -rf ./scripts ./build
       - name: zip create
         working-directory: ./lavegaa
         run: zip -qq -r ./lavegaa.zip ./build
