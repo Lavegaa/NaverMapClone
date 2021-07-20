@@ -14,10 +14,12 @@ jobs:
       - name: Install Dependencies
         working-directory: ./lavegaa
         run: yarn install --frozen-lockfile
-
       - name: Build # Fastify Build and Start
         working-directory: ./lavegaa
         run: yarn build
+      - name: Copy Appspec
+        working-directory: ./lavegaa
+        run: cp ./appspec.yml ./build
       - name: zip create
         working-directory: ./lavegaa
         run: zip -qq -r ./lavegaa.zip ./build
