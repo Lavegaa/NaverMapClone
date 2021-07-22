@@ -1,0 +1,17 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/lavegaa
+    overwrite: yes
+permissions:
+  - object: /home/ubuntu/lavegaa
+    owner: ubuntu
+    group: ubuntu
+    mode: 755
+hooks:
+  AfterInstall:
+    - location: scripts/nginx.sh
+      timeout: 300
+      runas: ubuntu
+
