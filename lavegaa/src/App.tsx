@@ -1,8 +1,8 @@
 import React from 'react';
-import Button from '@components/Button';
+import NaverMap from '@components/NaverMap';
 
 function App() {
-  return <Button primary={false} backgroundColor="white" size="small" label="hello" />;
+  return <NaverMap />;
 }
 
 export default App;
