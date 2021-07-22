@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { MapWrapper } from './NaverMap.style';
 
 const NaverMap = () => {
   useEffect(() => {
@@ -11,16 +12,9 @@ const NaverMap = () => {
     initMap();
   }, []);
 
-  // 지도 사이즈 관련 스타일
-  const mapStyle = {
-    width: '80%',
-    height: '600px',
-  };
-
   return (
     <>
-      <h1>지도</h1>
-      <div id="map" style={mapStyle} />
+      <MapWrapper id="map" />
     </>
   );
 };

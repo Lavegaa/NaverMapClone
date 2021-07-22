@@ -7,6 +7,12 @@
         ],
         "@components/*":[
            "src/components/*"
+        ],
+        "@assets/*":[
+           "src/assets/*"
+        ],
+        "@page/*":[
+           "src/page/*"
         ]
      }
   }

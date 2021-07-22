@@ -1,8 +1,12 @@
 import React from 'react';
-import NaverMap from '@components/NaverMap';
+import MainPage from './components/Page/MainPage';
 
 function App() {
-  return <NaverMap />;
+  return (
+    <>
+      <MainPage />
+    </>
+  );
 }
 
 export default App;
