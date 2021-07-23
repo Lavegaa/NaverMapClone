@@ -1,0 +1,49 @@
+name: LavegaaWebAppDeploy
+on:
+  push:
+    branches:
+      - lavegaa
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code.
+        uses: actions/checkout@v2
+      - name: Check Node v
+        run: node -v
+      - name: Install Dependencies
+        working-directory: ./lavegaa
+        run: yarn install --frozen-lockfile
+      - name: Build # Fastify Build and Start
+        working-directory: ./lavegaa
+        run: yarn build
+      - name: Copy Appspec
+        working-directory: ./lavegaa
+        run: cp ./appspec.yml ./build
+      - name: Copy scripts
+        working-directory: ./lavegaa
+        run: cp -rf ./scripts ./build
+      - name: zip create
+        working-directory: ./lavegaa
+        run: zip -qq -r ./lavegaa.zip ./build
+        shell: bash
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+      - name: Upload to S3 # Upload build file to S3
+        working-directory: ./lavegaa
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          aws s3 cp --region ap-northeast-2 ./lavegaa.zip s3://mapclone-server/lavegaa/lavegaa.zip
+      - name: Deploy # Deploy to EC2
+        working-directory: ./lavegaa
+        run: aws deploy create-deployment
+          --application-name my-app
+          --deployment-config-name CodeDeployDefault.AllAtOnce
+          --deployment-group-name my-group
+          --s3-location bucket=mapclone-server,key=lavegaa/lavegaa.zip,bundleType=zip
