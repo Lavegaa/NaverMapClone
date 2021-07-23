@@ -7,21 +7,21 @@ const testSchema = {
         type: 'object',
         required: [
           'id',
-          'place_name',
-          'owner_id',
+          'placename',
+          'ownerid',
           'latitude',
           'longitude',
-          'favorite_id',
-          'created_time',
+          'favoriteid',
+          'createdtime',
         ],
         properties: {
           id: { type: 'number' },
-          place_name: { type: 'string' },
-          owner_id: { type: 'number' },
+          placename: { type: 'string' },
+          ownerid: { type: 'number' },
           latitude: { type: 'number' },
           longitude: { type: 'number' },
-          favorite_id: { type: 'string' },
-          created_time: { type: 'string' },
+          favoriteid: { type: 'string' },
+          createdtime: { type: 'string' },
         },
       },
     },
@@ -38,7 +38,7 @@ async function routes(fastify: any, options: any) {
       try {
         const { owner_id, favorite_id } = request.query
         const { rows } = await client.query(
-          `SELECT * FROM place WHERE owner_id=${owner_id} AND favorite_id=${favorite_id} ORDER BY created_time DESC`
+          `SELECT id, place_name as placename, owner_id as ownerid, latitude, longitude, favorite_id as favoriteid, created_time as createdtime FROM place WHERE owner_id=${owner_id} AND favorite_id=${favorite_id} ORDER BY created_time DESC`
         )
         console.log(rows)
         reply.send(rows)
@@ -64,7 +64,7 @@ async function routes(fastify: any, options: any) {
           `
         )
         const { rows } = await client.query(
-          `SELECT * FROM place WHERE owner_id=${owner_id} AND favorite_id=${favorite_id} ORDER BY created_time DESC`
+          `SELECT id, place_name as placename, owner_id as ownerid, latitude, longitude, favorite_id as favoriteid, created_time as createdtime FROM place WHERE owner_id=${owner_id} AND favorite_id=${favorite_id} ORDER BY created_time DESC`
         )
         console.log(rows)
         reply.send(rows)
@@ -84,7 +84,7 @@ async function routes(fastify: any, options: any) {
           `DELETE FROM place WHERE id=${id} AND owner_id=${owner_id} AND favorite_id=${favorite_id}`
         )
         const { rows } = await client.query(
-          `SELECT * FROM place WHERE owner_id=${owner_id} AND favorite_id=${favorite_id} ORDER BY created_time DESC`
+          `SELECT id, place_name as placename, owner_id as ownerid, latitude, longitude, favorite_id as favoriteid, created_time as createdtime FROM place WHERE owner_id=${owner_id} AND favorite_id=${favorite_id} ORDER BY created_time DESC`
         )
         console.log(rows)
         reply.send(rows)

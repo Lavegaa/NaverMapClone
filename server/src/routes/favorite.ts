@@ -6,12 +6,12 @@ const favoriteSchema = {
       type: 'array',
       items: {
         type: 'object',
-        required: ['id', 'favorite_name', 'owner_id', 'created_time', 'length'],
+        required: ['id', 'favoritename', 'ownerid', 'createdtime', 'length'],
         properties: {
           id: { type: 'number' },
-          favorite_name: { type: 'string' },
-          owner_id: { type: 'number' },
-          created_time: { type: 'string' },
+          favoritename: { type: 'string' },
+          ownerid: { type: 'number' },
+          createdtime: { type: 'string' },
           length: { type: 'number' },
         },
       },
@@ -36,7 +36,7 @@ async function routes(fastify: any, options: any) {
       try {
         const { owner_id } = request.query
         let { rows } = await client.query(
-          `SELECT * FROM favorite WHERE owner_id=${owner_id} ORDER BY created_time DESC;`
+          `SELECT id, favorite_name as favoritename, owner_id as ownerid, created_time as createdtime FROM favorite WHERE owner_id=${owner_id} ORDER BY created_time DESC;`
         )
 
         const result = await Promise.all(
@@ -76,7 +76,7 @@ async function routes(fastify: any, options: any) {
           VALUES('${favorite_name}', ${owner_id}, '${now}');`
         )
         const { rows } = await client.query(
-          `SELECT * FROM favorite WHERE owner_id=${owner_id} ORDER BY created_time DESC`
+          `SELECT id, favorite_name as favoritename, owner_id as ownerid, created_time as createdtime, length FROM favorite WHERE owner_id=${owner_id} ORDER BY created_time DESC;`
         )
         console.log(rows)
         reply.send(rows)
@@ -94,7 +94,7 @@ async function routes(fastify: any, options: any) {
         const { id, owner_id } = request.query
         await client.query(`DELETE FROM public.favorite WHERE id=${id}`)
         const { rows } = await client.query(
-          `SELECT * FROM favorite WHERE owner_id=${owner_id} ORDER BY created_time DESC`
+          `SELECT id, favorite_name as favoritename, owner_id as ownerid, created_time as createdtime, length FROM favorite WHERE owner_id=${owner_id} ORDER BY created_time DESC;`
         )
         console.log(rows)
         reply.send(rows)
