@@ -1,7 +1,24 @@
 import React from 'react';
 
-const FavoriteButton = () => {
-  return <div>hello</div>;
+interface favoriteType {
+  id: number;
+  favoriteName: string;
+  ownerId: number;
+  createdTime: string;
+  length: number;
+}
+
+interface FavoriteButtonProps {
+  favorite: favoriteType;
+}
+
+const FavoriteButton = ({ favorite }: FavoriteButtonProps) => {
+  return (
+    <>
+      <h1>{favorite.favoriteName}</h1>
+      <h1>{favorite.length}</h1>
+    </>
+  );
 };
 
 export default FavoriteButton;
