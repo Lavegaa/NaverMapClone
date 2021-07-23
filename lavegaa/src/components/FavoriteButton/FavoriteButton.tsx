@@ -1,4 +1,5 @@
 import React from 'react';
+import { Wrapper, TextWrapper, Text } from './FavoriteButton.style';
 
 interface favoriteType {
   id: number;
@@ -15,8 +16,21 @@ interface FavoriteButtonProps {
 const FavoriteButton = ({ favorite }: FavoriteButtonProps) => {
   return (
     <>
-      <h1>{favorite.favoritename}</h1>
-      <h1>{favorite.length}</h1>
+      <Wrapper data-testid="favoriteButton">
+        <TextWrapper>
+          <Text size="16px" color="black">
+            {favorite.favoritename}
+          </Text>
+        </TextWrapper>
+        <TextWrapper>
+          <Text size="14px" color="blue">
+            {favorite.length}
+            <Text size="14px" color="black">
+              개
+            </Text>
+          </Text>
+        </TextWrapper>
+      </Wrapper>
     </>
   );
 };

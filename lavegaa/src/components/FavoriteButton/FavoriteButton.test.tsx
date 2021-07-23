@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import FavoriteButton from './FavoriteButton';
 
 describe('FavoriteButton', () => {
@@ -15,4 +15,13 @@ describe('FavoriteButton', () => {
     getByText('맛집 리스트');
     getByText('4');
   });
+  // it('hover', async () => {
+  //   const { getByTestId } = render(<FavoriteButton favorite={sampleFavorite} />);
+  //   const button = getByTestId('favoriteButton');
+  //   fireEvent.mouseOver(button);
+  //   const newbutton = await getByTestId('favoriteButton');
+  //   await waitFor(() => {
+  //     expect(newbutton).toHaveStyle('background: white');
+  //   });
+  // });
 });
