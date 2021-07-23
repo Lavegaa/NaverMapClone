@@ -1,6 +1,6 @@
 var moment = require('moment') // require
 
-const testSchema = {
+const favoriteSchema = {
   response: {
     200: {
       type: 'array',
@@ -18,20 +18,44 @@ const testSchema = {
   },
 }
 
+interface favoriteType {
+  id: number
+  favorite_name: string
+  owner_id: number
+  created_time: string
+}
+
 async function routes(fastify: any, options: any) {
   //Access our client instance value from our decorator
   const client = fastify.db.client
   fastify.get(
     `/favorite`,
-    { schema: testSchema },
+    { schema: favoriteSchema },
     async function (request: any, reply: any) {
       try {
         const { owner_id } = request.query
-        const { rows } = await client.query(
-          `SELECT * FROM favorite WHERE owner_id=${owner_id} ORDER BY created_time DESC`
+        let { rows } = await client.query(
+          `SELECT * FROM favorite WHERE owner_id=${owner_id} ORDER BY created_time DESC;`
         )
-        console.log(rows)
-        reply.send(rows)
+
+        const result = await Promise.all(
+          rows.map(async (elem: favoriteType) => {
+            try {
+              let place = await client.query(
+                `SELECT count(*) FROM place WHERE owner_id=${owner_id} AND favorite_id=${elem.id}`
+              )
+              return {
+                ...elem,
+                length: place.rows[0].count,
+              }
+            } catch (err) {
+              throw err
+            }
+          })
+        )
+
+        console.log(result)
+        reply.send(result)
       } catch (err) {
         throw new Error(err)
       }
@@ -40,7 +64,7 @@ async function routes(fastify: any, options: any) {
 
   fastify.post(
     `/favorite`,
-    { schema: testSchema },
+    { schema: favoriteSchema },
     async function (request: any, reply: any) {
       try {
         const { favorite_name, owner_id } = request.body
@@ -63,7 +87,7 @@ async function routes(fastify: any, options: any) {
 
   fastify.delete(
     `/favorite`,
-    { schema: testSchema },
+    { schema: favoriteSchema },
     async function (request: any, reply: any) {
       try {
         const { id, owner_id } = request.query
