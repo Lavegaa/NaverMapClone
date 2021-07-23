@@ -5,9 +5,9 @@ import FavoriteButton from './FavoriteButton';
 describe('FavoriteButton', () => {
   const sampleFavorite = {
     id: 1,
-    favoriteName: '맛집 리스트',
-    ownerId: 1,
-    createdTime: '2021-07-16T14:28:58.000Z',
+    favoritename: '맛집 리스트',
+    ownerid: 1,
+    createdtime: '2021-07-16T14:28:58.000Z',
     length: 4,
   };
   it('has title and count', () => {
