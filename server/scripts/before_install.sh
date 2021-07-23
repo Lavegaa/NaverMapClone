@@ -2,8 +2,7 @@
 
 # Install node.js
 sudo apt-get install npm -y
-node -v
-npm -v
+
 sudo rm -rf /home/ubuntu/server/*
 # Install nodemon
 # sudo npm install nodemon -g
