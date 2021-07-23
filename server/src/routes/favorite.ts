@@ -6,12 +6,13 @@ const favoriteSchema = {
       type: 'array',
       items: {
         type: 'object',
-        required: ['id', 'favorite_name', 'owner_id', 'created_time'],
+        required: ['id', 'favorite_name', 'owner_id', 'created_time', 'length'],
         properties: {
           id: { type: 'number' },
           favorite_name: { type: 'string' },
           owner_id: { type: 'number' },
           created_time: { type: 'string' },
+          length: { type: 'number' },
         },
       },
     },
