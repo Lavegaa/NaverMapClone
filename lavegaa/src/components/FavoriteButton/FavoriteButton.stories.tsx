@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import FavoriteButton from './FavoriteButton';
 
 export default {
-  title: 'FavoriteButton',
+  title: 'LeftPannel/FavoriteButton',
   component: FavoriteButton,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -20,7 +20,7 @@ const sampleFavorite = {
   length: 4,
 };
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const Basic = Template.bind({});
+Basic.args = {
   favorite: sampleFavorite,
 };
