@@ -3,10 +3,10 @@ import { Client } from 'pg'
 require('dotenv').config()
 const client = new Client({
   user: 'postgres',
-  password: process.env.PASSWORD,
-  host: '3.34.133.164',
+  password: '0000',
+  host: 'localhost',
   port: 5432,
-  database: process.env.DATABASE,
+  database: 'mapclone',
 })
 async function dbconnector(fastify: any, options: any) {
   try {
