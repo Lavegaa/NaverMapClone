@@ -14,8 +14,6 @@ jobs:
       - name: Install Dependencies
         working-directory: ./server
         run: yarn install --frozen-lockfile
-        run: cd ./server & yarn install --frozen-lockfile
-
       - name: Build # Fastify Build and Start
         working-directory: ./server
         run: yarn build
