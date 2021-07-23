@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Container from 'component/Container';
 import * as resetStyle from 'asset/css/reset.styled.js';
 import { BiSearch } from 'react-icons/bi';
-import { getGeocodeBySearchText } from 'repository/mapRepository';
+import { getPlaceBySearchWord } from 'repository/mapRepository';
 
 const Map = styled.div`
   width: 100%;
@@ -47,7 +47,7 @@ const SearchBtn = styled(BiSearch)`
 `;
 
 const Main = () => {
-  const [searchText, setSearchText] = useState('');
+  const [searchword, setSearchWord] = useState('');
 
   const initMap = async () => {
     await getLocation().then((coords: any) => {
@@ -99,8 +99,13 @@ const Main = () => {
   };
 
   const onSearch = () => {
-    getGeocodeBySearchText().then((response: any) => {
-      console.log(response);
+    getPlaceBySearchWord(searchword).then((response: any) => {
+      if (response.status === 200) {
+        const { data } = response;
+        console.log(data);
+      } else {
+        //TODO:에러처리
+      }
     });
   };
 
@@ -115,9 +120,9 @@ const Main = () => {
         <SearchInput
           type="text"
           placeholder="Pick Map 지도 검색"
-          value={searchText}
+          value={searchword}
           onChange={({ target }) => {
-            setSearchText(target.value);
+            setSearchWord(target.value);
           }}
           onKeyPress={(e) => onKeyPress(e)}
         />
