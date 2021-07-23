@@ -4,7 +4,7 @@ require('dotenv').config()
 const client = new Client({
   user: 'postgres',
   password: process.env.PASSWORD,
-  host: 'localhost',
+  host: '3.34.133.164',
   port: 5432,
   database: process.env.DATABASE,
 })

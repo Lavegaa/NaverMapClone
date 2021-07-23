@@ -4,6 +4,7 @@ import dbConnection from './plugins/dbConnection'
 import routes from './routes/routes'
 import favorite from './routes/favorite'
 import place from './routes/place'
+import search from './routes/search'
 
 const server: FastifyInstance<Server, IncomingMessage, ServerResponse> =
   fastify()
@@ -11,6 +12,7 @@ const server: FastifyInstance<Server, IncomingMessage, ServerResponse> =
 server.register(dbConnection)
 server.register(favorite)
 server.register(place)
+server.register(search)
 
 server.register(require('fastify-cors'), {
   // put your options here
