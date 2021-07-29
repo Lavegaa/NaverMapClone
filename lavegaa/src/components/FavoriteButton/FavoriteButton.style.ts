@@ -22,6 +22,7 @@ export const TextWrapper = styled.div`
 `;
 
 export const Text = styled.span`
+  font-family: 'AppleSDGothicNeoM00';
   font-size: ${({ size }: TextPropsType) => size};
   color: ${({ color }: TextPropsType) => color}; ;
 `;
