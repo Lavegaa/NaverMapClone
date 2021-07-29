@@ -14,6 +14,7 @@ export const Wrapper = styled.div`
   &:hover {
     background: rgba(0, 0, 0, 0.01);
   }
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
 export const TextWrapper = styled.div`
