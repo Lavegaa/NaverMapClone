@@ -20,10 +20,10 @@ module.exports = {
     'react/prop-types': 0,
     'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
     'jsx-a11y/no-noninteractive-element-interactions': 0,
-    "react/jsx-props-no-spreading": "off",
+    'react/jsx-props-no-spreading': 'off',
     '@typescript-eslint/no-empty-function': 'off',
     'react/require-default-props': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/no-explicit-any': 'off'
+    '@typescript-eslint/no-explicit-any': 'off',
   },
 };
