@@ -7,5 +7,5 @@ sudo npm install
 
 sudo cp /home/ubuntu/server-env/.env ./
 
-npm run build
+sudo npm run build
 
