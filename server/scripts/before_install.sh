@@ -4,6 +4,7 @@
 sudo apt-get install npm -y
 
 sudo rm -rf /home/ubuntu/server/*
+
 # Install nodemon
 # sudo npm install nodemon -g
 
