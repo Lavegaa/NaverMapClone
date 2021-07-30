@@ -5,3 +5,7 @@ sudo rm -rf ./node_modules
 
 sudo npm install
 
+sudo cp /home/ubuntu/server-env/.env ./
+
+npm run build
+

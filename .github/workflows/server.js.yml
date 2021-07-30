@@ -11,15 +11,15 @@ jobs:
         uses: actions/checkout@v2
       - name: Check Node v
         run: node -v
-      - name: Install Dependencies
-        working-directory: ./server
-        run: yarn install --frozen-lockfile
-      - name: Setting env
-        working-directory: ./server
-        run: sudo cp /home/ubuntu/server-env/.env ./
-      - name: Build # Fastify Build and Start
-        working-directory: ./server
-        run: yarn build
+      # - name: Install Dependencies
+      #   working-directory: ./server
+      #   run: yarn install --frozen-lockfile
+      # - name: Setting env
+      #   working-directory: ./server
+      #   run: sudo cp /home/ubuntu/server-env/.env ./
+      # - name: Build # Fastify Build and Start
+      #   working-directory: ./server
+      #   run: yarn build
       - name: zip create
         working-directory: ./server
         run: zip -qq -r ./server.zip .
