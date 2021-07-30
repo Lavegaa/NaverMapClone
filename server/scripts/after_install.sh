@@ -8,5 +8,3 @@ sudo npm install
 sudo cp /home/ubuntu/server-env/.env ./
 
 sudo npm run build
-
-forever stopall
