@@ -2,6 +2,6 @@
 
 cd /home/ubuntu/server
 
-forerver stop 0
+forever stopall
 
 npm run start
