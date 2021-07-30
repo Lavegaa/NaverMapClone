@@ -2,6 +2,6 @@
 
 cd /home/ubuntu/server
 
-pm2 kill
+forerver stop 0
 
 npm run start
